@@ -13,31 +13,35 @@ public:
 
 Node *swapList(Node *head){
     Node *firstNode, *secondNode;
+    //set the first node
     firstNode=head;
+    //set the second node
     secondNode=head->next;
+    //swapping
     swap(firstNode->data, secondNode->data);
+
     head = firstNode;
     return head;
 }
 
 void printList(Node *head){
-    Node *s = head;
-    while(s!=NULL){
-        cout<<s->data<<" ";
-        s=s->next;
+    for(Node *tmp=head; tmp!=NULL; tmp=tmp->next){
+        cout<<tmp->data<<" ";
     }
+    cout<<endl;
 }
 
 int main(){
-    int t, value;
-    cin>>t;
+    int n, value;
+    cin>>n;
     Node *newNode, *tmp, *head;
-    for(int i=0;i<t; i++){
+    //Input linked list
+    for(int i=1;i<=n; i++){
         cin>>value;
         newNode = new Node();
         newNode->data = value;
         newNode->next = NULL;
-        if(i==0){
+        if(i==1){
             head = newNode;
             tmp = head;
         } else{
@@ -45,6 +49,12 @@ int main(){
             tmp=tmp->next;
         }
     }
+
+    //Print before swapping
+    printList(head);
+    //Swapping
     swapList(head);
+    //Printing after swapping
+    cout<<"After swapping: ";
     printList(head);
 }
