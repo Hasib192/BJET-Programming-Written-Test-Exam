@@ -1,6 +1,6 @@
 //Input: 1->2->3
 //Output: 3->2->1
-//Swap only the first & last element
+//Swap only the first & last element, means swap 1 & 3
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -10,34 +10,43 @@ public:
     int data;
     Node *next;
 };
+
 void printList(Node *head){
-    Node *s=head;
-    while(s!=NULL){
-        cout<<s->data<<" ";
-        s=s->next;
+    for(Node *tmp=head; tmp!=NULL; tmp=tmp->next){
+        cout<<tmp->data<<" ";
     }
+    cout<<endl;
 }
+
 Node *swapList(Node *head){
+    //fetching the first node
     Node *firstNode=head;
+
+    //fetching the last node
     Node *tmp=head;
     while(tmp->next!=NULL){
         tmp=tmp->next;
     }
     Node *lastNode=tmp;
+
+    //swapping
     swap(firstNode->data, lastNode->data);
+
     head = firstNode;
     return head;
 }
+
 int main(){
     int n, value;
     cin>>n;
     Node *newNode, *head, *tmp;
-    for(int i=0; i<n; i++){
+    //Input Linked List
+    for(int i=1; i<=n; i++){
         cin>>value;
         newNode = new Node();
         newNode->data = value;
         newNode->next = NULL;
-        if(i==0){
+        if(i==1){
             head = newNode;
             tmp = head;
         } else{
@@ -45,9 +54,11 @@ int main(){
             tmp=tmp->next;
         }
     }
+    //Print before swapping
     printList(head);
+    //Swapping
     swapList(head);
-    cout<<endl;
+    //Printing after swapping
     cout<<"After swapping: ";
     printList(head);
 }
