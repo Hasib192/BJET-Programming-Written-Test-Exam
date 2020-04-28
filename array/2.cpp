@@ -15,6 +15,32 @@ Do this as a function.
 #include<bits/stdc++.h>
 using namespace std;
 
-int main(){
+int countElement(int arr[], int n){
+    /*Input :   arr[] = {10, 20, 20, 10, 30, 10}
+    Output : 3
+    There are three distinct elements 10, 20 and 30.*/
+    int res = 1;
+    int i, j;
+    // Pick all elements one by one
+    for (i = 1; i < n; i++) {
+        for (j = 0; j < i; j++)
+            if (arr[i] == arr[j])
+                break;
 
+        // If not printed earlier, then print it
+        if (i == j)
+            res++;
+    }
+    return res;
+}
+
+int main(){
+    int n;
+    cin>>n;
+    int arr[n];
+    for(int i=0; i<n; i++){
+        cin>>arr[i];
+    }
+    int e = countElement(arr, n);
+    cout<<e<<endl;
 }
