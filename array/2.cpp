@@ -1,5 +1,5 @@
 /*
-Count distinct array elements. If found duplicate count as one.
+Count array elements. If found duplicate count as one.
 Sample Input/Output:
 
 1) A = [3, 2, 2, 1, 1]
@@ -19,19 +19,24 @@ int countElement(int arr[], int n){
     /*Input :   arr[] = {10, 20, 20, 10, 30, 10}
     Output : 3
     There are three distinct elements 10, 20 and 30.*/
-    int res = 1;
+    int res = 0;
     int i, j;
     // Pick all elements one by one
-    for (i = 1; i < n; i++) {
-        for (j = 0; j < i; j++)
-            if (arr[i] == arr[j])
+    for (i = 0; i < n; i++)
+    {
+        for(j = i + 1; j < n; j++)
+        {
+            if(arr[i] == arr[j])
+            {
+                res++;
                 break;
-
-        // If not printed earlier, then print it
-        if (i == j)
-            res++;
+            }
+        }
     }
-    return res;
+    //Total value subtract by duplicate value
+    int c=n-res;
+    
+    return c;
 }
 
 int main(){
