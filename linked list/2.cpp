@@ -19,7 +19,7 @@ Node *swapList(Node *head){
     secondNode=head->next;
     //swapping
     swap(firstNode->data, secondNode->data);
-
+    //Returing head
     head = firstNode;
     return head;
 }
